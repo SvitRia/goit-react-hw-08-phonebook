@@ -1,7 +1,7 @@
 import { styled } from 'styled-components';
 
 export const Section = styled.section`
-  width: 450px;
+  width: 460px;
   display: flex;
   flex-direction: column;
   justify-content: center;
