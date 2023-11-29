@@ -10,7 +10,7 @@ import { ErrMessage, StyledForm, StyledField, Label, BtnAdd } from './ContactFor
 
 const quizSchema = Yup.object().shape({
   name: Yup.string().min(3, 'Too short!').required('This field is required!'),
-    phone: Yup.string().matches(/^\d{3}-\d{3}-\d{4}$/, 'Must be in format: 000-000-0000').required('This field is required!')
+    number: Yup.string().matches(/^\d{3}-\d{3}-\d{4}$/, 'Must be in format: 000-000-0000').required('This field is required!')
   
 });
 
@@ -18,14 +18,15 @@ const ContactForm = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
 
-  const handleFormSubmit = ({ name, phone }, { resetForm } ) => {
+  const handleFormSubmit = ({ name, number }, { resetForm } ) => {
   const hasContact = contacts.some(contact => contact.name.toLowerCase().includes(name.toLowerCase()))
     
     if (hasContact) {
+      resetForm();
       return alert(
         `WARNING! ${name} is already in contacts`) 
     }
-    dispatch(addContact({ name, phone }));
+    dispatch(addContact({ name, number }));
     
   resetForm();
   }
@@ -34,7 +35,7 @@ const ContactForm = () => {
       <Formik
         initialValues={{
           name: '',
-          phone: '',
+          number: '',
         }}
         onSubmit={handleFormSubmit}
         validationSchema={quizSchema}
@@ -49,8 +50,8 @@ const ContactForm = () => {
 
           <Label>
             Number (000-000-0000)
-            <StyledField type="text" name="phone" />
-            <ErrMessage name="phone" component="div" />
+            <StyledField type="text" name="number" />
+            <ErrMessage name="number" component="div" />
           </Label>
 
           <BtnAdd type="submit">Add contact</BtnAdd>

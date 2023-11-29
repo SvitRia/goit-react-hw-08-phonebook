@@ -5,12 +5,12 @@ import { useDispatch } from 'react-redux';
 
 import { deleteContact } from 'redux/operations';
 
-export const ContactItem = (({ contact: { id, name, phone }}) => {
+export const ContactItem = (({ contact: { id, name, number }}) => {
     const dispatch = useDispatch();
     return (
             <ListItem>
                 <span>{name}</span>
-                <span>{phone}</span>
+                <span>{number}</span>
                 <BtnTrash type="button" onClick={() => dispatch(deleteContact(id))}><HiTrash/></BtnTrash>
             </ListItem>
         )
