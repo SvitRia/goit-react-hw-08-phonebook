@@ -41,10 +41,6 @@ export const RegisterForm = () => {
             rememberMe: false
           }}
           onSubmit={handleRegistreSubmit}
-          // onSubmit={(values) => {
-          //   console.log(values)
-          //   alert(JSON.stringify(values, null, 2));
-          // }}
         >
           {( { handleSubmit ,errors, touched }) => (
             <form onSubmit={handleSubmit}>
