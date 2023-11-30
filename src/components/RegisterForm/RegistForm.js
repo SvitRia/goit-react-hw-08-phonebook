@@ -17,7 +17,7 @@ import {
 export const RegisterForm = () => {
   const dispatch = useDispatch();
 
-  const handleSubmit = ({ name, email, password }, { resetForm }) => {
+  const handleRegistreSubmit = ({ name, email, password }, { resetForm }) => {
     // e.preventDefault();
     // const form = e.currentTarget;
     dispatch(
@@ -32,7 +32,7 @@ export const RegisterForm = () => {
 
   return (
     <Flex bg="bisque_lite" align="center" justify="center" h="100vh">
-       <Box bg="white" p={6} rounded="md" w={64}>
+       <Box bg="white" w="40vw" p={6} rounded="md" >
         <Formik
           initialValues={{
             name: "",
@@ -40,12 +40,13 @@ export const RegisterForm = () => {
             password: "",
             rememberMe: false
           }}
-           onSubmit={handleSubmit}
+          onSubmit={handleRegistreSubmit}
           // onSubmit={(values) => {
+          //   console.log(values)
           //   alert(JSON.stringify(values, null, 2));
           // }}
         >
-          {({ handleSubmit, errors, touched }) => (
+          {( { handleSubmit ,errors, touched }) => (
             <form onSubmit={handleSubmit}>
               <VStack spacing={4} align="flex-start">
                  <FormControl>

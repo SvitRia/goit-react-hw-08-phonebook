@@ -40,7 +40,7 @@ const formik = useFormik({
   });
   return (
     <Flex bg="gray.100" align="center" justify="center" h="100vh">
-      <Box bg="white" p={6} rounded="md">
+      <Box bg="white" w="40vw" p={6} rounded="md">
         <form onSubmit={handleSubmit}>
           <VStack spacing={4} align="flex-start">
             
@@ -50,7 +50,7 @@ const formik = useFormik({
                 id="email"
                 type="email"
                 variant="filled"
-                // onChange={formik.handleChange}
+                onChange={formik.handleChange}
                 value={formik.values.email}
               />
             </FormControl>
@@ -69,7 +69,7 @@ const formik = useFormik({
             <Checkbox
               id="rememberMe"
               name="rememberMe"
-              // onChange={formik.handleChange}
+              onChange={formik.handleChange}
               isChecked={formik.values.rememberMe}
               colorScheme="purple"
             >
