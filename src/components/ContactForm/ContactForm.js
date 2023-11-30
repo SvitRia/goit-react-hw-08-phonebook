@@ -37,6 +37,7 @@ const ContactForm = () => {
       return alert(`WARNING! ${name} is already in contacts`);
     }
     dispatch(addContact({ name, number }));
+   
     resetForm();
   };
   const formik = useFormik({
@@ -54,7 +55,7 @@ const ContactForm = () => {
   return (
     <Flex bg="gray.100" align="center" justify="center" h="100vh">
       <Box bg="white" p={6} rounded="md">
-          <form onSubmit={handleFormSubmit}>
+          <form onSubmit={formik.handleSubmit}>
             <VStack spacing={4} align="flex-start">
               <FormControl>
                 <FormLabel htmlFor="name">Name</FormLabel>
