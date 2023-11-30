@@ -17,7 +17,6 @@ export default function Home() {
     <div style={styles.container}>
       <h1 style={styles.title}>
         Your contact's book
-      
       </h1>
     </div>
   );

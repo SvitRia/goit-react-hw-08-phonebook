@@ -6,7 +6,6 @@ import {
 
 export const AuthNav = () => {
   return (
-  
     <Breadcrumb fontWeight='medium' fontSize='sm'>
   <BreadcrumbItem>
     <BreadcrumbLink href='/register'>Register</BreadcrumbLink>

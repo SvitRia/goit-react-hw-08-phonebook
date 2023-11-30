@@ -35,7 +35,7 @@ const ContactForm = () => {
       resetForm();
       return alert(`WARNING! ${name} is already in contacts`);
     }
-    dispatch(addContact({ name: number }));
+    dispatch(addContact({ name, number }));
    
     resetForm();
   };
@@ -45,7 +45,7 @@ const ContactForm = () => {
       number: "",
       },
     // validationSchema: { quizSchema },
-    onSubmit:(values)=> {handleFormSubmit(values.name ,values.number)},
+    onSubmit: (values) => { handleFormSubmit({ name: values.name, number:values.number })},
     // onSubmit: (values) => {
     //   alert(JSON.stringify(values, null, 2));
     // },
