@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/Auth/Operations';
 // import css from './RegisterForm.module.css';
-import { useFormik } from "formik";
+import { Formik, Field } from "formik";
 import {
   Box,
   Button,
@@ -9,94 +9,105 @@ import {
   Flex,
   FormControl,
   FormLabel,
+  FormErrorMessage,
   Input,
-  VStack,
-  theme
+  VStack
 } from "@chakra-ui/react";
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    const form = e.currentTarget;
+  const handleSubmit = ({ name, email, password }, { resetForm }) => {
+    // e.preventDefault();
+    // const form = e.currentTarget;
     dispatch(
       register({
-        name: form.elements.name.value,
-        email: form.elements.email.value,
-        password: form.elements.password.value,
+        name,
+        email,
+        password
       })
     );
-    form.reset();
+    resetForm();
   };
-const formik = useFormik({
-    initialValues: {
-      name: "",
-      email: "",
-      password: "",
-      rememberMe: false
-    },
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
-    }
-  });
+
   return (
-    <Flex bg="gray.100" align="center" justify="center" h="100vh">
-      <Box bg="white" p={6} rounded="md">
-        <form onSubmit={handleSubmit}>
-          <VStack spacing={4} align="flex-start">
-            <FormControl>
-              <FormLabel htmlFor="name">Name</FormLabel>
-              <Input
-                id="name"
-                name="name"
-                type="name"
-                variant="filled"
-                // onChange={formik.handleChange}
-                value={formik.values.name}
-              />
-            </FormControl>
-            <FormControl>
-              <FormLabel htmlFor="email">Email Address</FormLabel>
-              <Input
-                id="email"
-                name="email"
-                type="email"
-                variant="filled"
-                // onChange={formik.handleChange}
-                value={formik.values.email}
-              />
-            </FormControl>
-            
-            <FormControl>
-              <FormLabel htmlFor="password">Password</FormLabel>
-              <Input
-                id="password"
-                name="password"
-                type="password"
-                variant="filled"
-                // onChange={formik.handleChange}
-                value={formik.values.password}
-              />
-            </FormControl>
-            <Checkbox
-              id="rememberMe"
-              name="rememberMe"
-              // onChange={formik.handleChange}
-              isChecked={formik.values.rememberMe}
-              colorScheme="purple"
-            >
-              Remember me?
-            </Checkbox>
-            <Button type="submit" colorScheme={theme.colors.orange} width="full">
-              Register
-            </Button>
-          </VStack>
-        </form>
+    <Flex bg="bisque_lite" align="center" justify="center" h="100vh">
+       <Box bg="white" p={6} rounded="md" w={64}>
+        <Formik
+          initialValues={{
+            name: "",
+            email: "",
+            password: "",
+            rememberMe: false
+          }}
+           onSubmit={handleSubmit}
+          // onSubmit={(values) => {
+          //   alert(JSON.stringify(values, null, 2));
+          // }}
+        >
+          {({ handleSubmit, errors, touched }) => (
+            <form onSubmit={handleSubmit}>
+              <VStack spacing={4} align="flex-start">
+                 <FormControl>
+                  <FormLabel htmlFor="name">Name</FormLabel>
+                  <Field
+                    as={Input}
+                    id="name"
+                    name="name"
+                    type="name"
+                    variant="filled"
+                  />
+                </FormControl>
+                <FormControl>
+                  <FormLabel htmlFor="email">Email Address</FormLabel>
+                  <Field
+                    as={Input}
+                    id="email"
+                    name="email"
+                    type="email"
+                    variant="filled"
+                  />
+                </FormControl>
+                <FormControl isInvalid={!!errors.password && touched.password}>
+                  <FormLabel htmlFor="password">Password</FormLabel>
+                  <Field
+                    as={Input}
+                    id="password"
+                    name="password"
+                    type="password"
+                    variant="filled"
+                    validate={(value) => {
+                      let error;
+
+                      if (value.length < 6) {
+                        error = "Password must contain at least 6 characters";
+                      }
+
+                      return error;
+                    }}
+                  />
+                  <FormErrorMessage>{errors.password}</FormErrorMessage>
+                </FormControl>
+                <Field
+                  as={Checkbox}
+                  id="rememberMe"
+                  name="rememberMe"
+                  colorScheme="purple"
+                >
+                  Remember me?
+                </Field>
+                <Button type="submit" colorScheme="purple" width="full">
+                 Register me
+                </Button>
+              </VStack>
+            </form>
+          )}
+        </Formik>
       </Box>
     </Flex>
   );
 }
+
 //   return (
 //     <form  onSubmit={handleSubmit} autoComplete="on">
 //       <label >
