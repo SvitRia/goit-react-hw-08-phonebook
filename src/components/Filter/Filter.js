@@ -1,4 +1,3 @@
-// import { FilterInput } from './Filter.styled';
 import { Input } from '@chakra-ui/react'
 import { useDispatch, useSelector } from 'react-redux';
 import { setFilter } from 'redux/filterSlice';
@@ -11,8 +10,8 @@ export const Filter = () => {
 
   return (
     <div>
-      <h3>Find contact by name</h3>
-      <Input
+      <h2><b>Find contact by name</b></h2>
+      <Input bg="bisque_lite"
         type="text"
         name="filter"
         value={filterName}

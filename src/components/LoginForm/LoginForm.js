@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/Auth/Operations';
-// import css from './LoginForm.module.css';
+
 import { Formik, Field } from "formik";
 import {
   Box,
@@ -28,8 +28,8 @@ export const LoginForm = () => {
     resetForm();
   };
  return (
-    <Flex bg="gray.100" align="center" justify="center" h="100vh">
-      <Box bg="white" p={6} rounded="md" w={64}>
+    <Flex bg="#b4cdcd" align="center" justify="center" h="100vh">
+      <Box bg="white" w="40vw" p={6} rounded="md" >
         <Formik
           initialValues={{
             email: "",
@@ -83,17 +83,4 @@ export const LoginForm = () => {
     </Flex>
   );
 }
-//   return (
-//     <form  onSubmit={handleSubmit} autoComplete="off">
-//       <label >
-//         Email
-//         <input type="email" name="email" />
-//       </label>
-//       <label >
-//         Password
-//         <input type="password" name="password" />
-//       </label>
-//       <button type="submit">Log In</button>
-//     </form>
-//   );
-// };
+

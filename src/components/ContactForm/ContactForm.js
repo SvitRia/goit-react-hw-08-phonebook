@@ -3,7 +3,6 @@ import {
   Box,
   Button,
   Flex,
-  theme,
   FormControl,
   FormLabel,
   Input,
@@ -36,7 +35,7 @@ const ContactForm = () => {
       resetForm();
       return alert(`WARNING! ${name} is already in contacts`);
     }
-    dispatch(addContact({ name, number }));
+    dispatch(addContact({ name: number }));
    
     resetForm();
   };
@@ -46,23 +45,23 @@ const ContactForm = () => {
       number: "",
       },
     // validationSchema: { quizSchema },
-    onSubmit:{handleFormSubmit},
+    onSubmit:(values)=> {handleFormSubmit(values.name ,values.number)},
     // onSubmit: (values) => {
     //   alert(JSON.stringify(values, null, 2));
     // },
 
   });
   return (
-    <Flex bg="gray.100" align="center" justify="center" h="100vh">
-      <Box bg="white" p={6} rounded="md">
+    <Flex bg="bisque_middle" align="center" justify="center" h="100vh">
+      <Box bg="white" w="40vw" p={6} rounded="md">
           <form onSubmit={formik.handleSubmit}>
             <VStack spacing={4} align="flex-start">
               <FormControl>
                 <FormLabel htmlFor="name">Name</FormLabel>
-                <Input
+                <Input 
                   id="name"
                   name="name"
-                  type="name"
+                  type="text"
                   variant="filled"
                   onChange={formik.handleChange}
                   value={formik.values.name}
@@ -70,10 +69,10 @@ const ContactForm = () => {
               </FormControl>
               <FormControl>
                 <FormLabel htmlFor="number">Number (000-000-0000)</FormLabel>
-                <Input
+                <Input 
                   id="number"
                   name="number"
-                  type="tel"
+                  type="text"
                   variant="filled"
                   placeholder="Phone number"
                   pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
@@ -82,7 +81,7 @@ const ContactForm = () => {
                 />
               </FormControl>
 
-              <Button type="submit" colorScheme={theme.colors.add} width="full">
+              <Button  type="submit" bg="add" color="white" width="full">
                 Add Contact
               </Button>
             </VStack>
@@ -93,33 +92,5 @@ const ContactForm = () => {
   );
 };
 
-//   return (
-//     <Formik
-//       initialValues={{
-//         name: '',
-//         number: '',
-//       }}
-//       onSubmit={handleFormSubmit}
-//       validationSchema={quizSchema}
-//       >
-//       <StyledForm>
-
-//         <Label>
-//           Name
-//           <StyledField type="text" name="name" placeholder=" " />
-//           <ErrMessage name="name" component="div" />
-//         </Label>
-
-//         <Label>
-//           Number (000-000-0000)
-//           <StyledField type="text" name="number" />
-//           <ErrMessage name="number" component="div" />
-//         </Label>
-
-//         <BtnAdd type="submit">Add contact</BtnAdd>
-//       </StyledForm>
-//     </Formik>
-//   );
-// };
 
 export default ContactForm;

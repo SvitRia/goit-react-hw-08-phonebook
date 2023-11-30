@@ -1,14 +1,21 @@
-import { NavLink } from 'react-router-dom';
-// import css from './AuthNav.module.css';
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+} from '@chakra-ui/react'
+
 export const AuthNav = () => {
   return (
-    <div>
-      <NavLink  to="/register">
-        Register
-      </NavLink>
-      <NavLink  to="/login">
-        Log In
-      </NavLink>
-    </div>
-  );
-};
+  
+    <Breadcrumb fontWeight='medium' fontSize='sm'>
+  <BreadcrumbItem>
+    <BreadcrumbLink href='/register'>Register</BreadcrumbLink>
+  </BreadcrumbItem>
+
+  <BreadcrumbItem>
+      <BreadcrumbLink href='/login'>Log In</BreadcrumbLink>
+  </BreadcrumbItem>
+
+    </Breadcrumb>
+    );
+ };

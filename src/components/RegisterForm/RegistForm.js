@@ -1,6 +1,5 @@
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/Auth/Operations';
-// import css from './RegisterForm.module.css';
 import { Formik, Field } from "formik";
 import {
   Box,
@@ -31,7 +30,7 @@ export const RegisterForm = () => {
   };
 
   return (
-    <Flex bg="bisque_lite" align="center" justify="center" h="100vh">
+    <Flex bg="bisque_middle" align="center" justify="center" h="100vh">
        <Box bg="white" w="40vw" p={6} rounded="md" >
         <Formik
           initialValues={{
@@ -47,7 +46,7 @@ export const RegisterForm = () => {
               <VStack spacing={4} align="flex-start">
                  <FormControl>
                   <FormLabel htmlFor="name">Name</FormLabel>
-                  <Field
+                  <Field 
                     as={Input}
                     id="name"
                     name="name"
@@ -57,7 +56,7 @@ export const RegisterForm = () => {
                 </FormControl>
                 <FormControl>
                   <FormLabel htmlFor="email">Email Address</FormLabel>
-                  <Field
+                  <Field 
                     as={Input}
                     id="email"
                     name="email"
@@ -67,7 +66,7 @@ export const RegisterForm = () => {
                 </FormControl>
                 <FormControl isInvalid={!!errors.password && touched.password}>
                   <FormLabel htmlFor="password">Password</FormLabel>
-                  <Field
+                  <Field 
                     as={Input}
                     id="password"
                     name="password"

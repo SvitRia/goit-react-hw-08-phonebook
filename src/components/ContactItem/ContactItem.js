@@ -1,5 +1,3 @@
-
-// import { ListItem, BtnTrash } from './ContactItem.styled';
 import {
     Box
 

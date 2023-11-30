@@ -1,20 +1,25 @@
-import { NavLink } from 'react-router-dom';
 import { useAuth } from 'hooks';
-import css from './Navigation. module.css';
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+} from '@chakra-ui/react'
 
 export const Navigation = () => {
   const { isLoggedIn } = useAuth();
 
   return (
-    <nav>
-      <NavLink className={css.link} to="/">
-        Home
-      </NavLink>
-      {isLoggedIn && (
-        <NavLink className={css.link} to="/contacts">
-          Contacts
-        </NavLink>
-      )}
-    </nav>
-  );
-};
+
+<Breadcrumb fontWeight='medium' fontSize='sm'>
+  <BreadcrumbItem>
+    <BreadcrumbLink href='/'>Home</BreadcrumbLink>
+  </BreadcrumbItem>
+
+  <BreadcrumbItem>
+    {isLoggedIn && (
+      <BreadcrumbLink href='/contacts'>Contacts</BreadcrumbLink>)}
+  </BreadcrumbItem>
+
+    </Breadcrumb>
+    );
+ };
