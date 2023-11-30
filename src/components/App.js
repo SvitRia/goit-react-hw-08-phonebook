@@ -7,6 +7,7 @@ import { RestrictedRoute } from './UserMenu/RestrictedRoute';
 import { refreshUser } from 'redux/Auth/Operations';
 import { useAuth } from 'hooks';
 
+ 
 const HomePage = lazy(() => import('Pages/Home'));
 const RegisterPage = lazy(() => import('Pages/Register'));
 const LoginPage = lazy(() => import('Pages/Login'));
