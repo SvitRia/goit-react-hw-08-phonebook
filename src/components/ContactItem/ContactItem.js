@@ -1,7 +1,7 @@
 
 // import { ListItem, BtnTrash } from './ContactItem.styled';
 import {
-    Tag,
+    Box
 
 } from '@chakra-ui/react';
 import { Button,  } from '@chakra-ui/react'
@@ -14,11 +14,11 @@ import { deleteContact } from 'redux/operations';
 export const ContactItem = (({ contact: { id, name, number }}) => {
     const dispatch = useDispatch();
     return (
-            <Tag>
+            <Box w='100%' p={4}>
                 <span>{name}</span>
                 <span>{number}</span>
                 <Button type="button" onClick={() => dispatch(deleteContact(id))}><HiTrash/></Button>
-            </Tag>
+            </Box>
         )
 })
 

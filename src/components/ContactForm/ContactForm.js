@@ -1,15 +1,14 @@
-// import { useFormik } from "formik";
-import { Formik, Field } from 'formik';
+ import { useFormik } from "formik";
 import {
   Box,
   Button,
   Flex,
+  theme,
   FormControl,
   FormLabel,
   Input,
-  VStack,
-  theme,
-} from '@chakra-ui/react';
+  VStack
+} from "@chakra-ui/react";
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts } from 'redux/selectors';
 import { addContact } from 'redux/operations';
@@ -40,50 +39,45 @@ const ContactForm = () => {
     dispatch(addContact({ name, number }));
     resetForm();
   };
-  // const formik = useFormik({
-  //   initialValues: {
-  //     name: "",
-  //     number: "",
-  //     },
-  //   // validationSchema: { quizSchema },
-  //   onSubmit:{handleFormSubmit},
-  //   // onSubmit: (values) => {
-  //   //   alert(JSON.stringify(values, null, 2));
-  //   // },
+  const formik = useFormik({
+    initialValues: {
+      name: "",
+      number: "",
+      },
+    // validationSchema: { quizSchema },
+    onSubmit:{handleFormSubmit},
+    // onSubmit: (values) => {
+    //   alert(JSON.stringify(values, null, 2));
+    // },
 
-  // });
+  });
   return (
     <Flex bg="gray.100" align="center" justify="center" h="100vh">
       <Box bg="white" p={6} rounded="md">
-        <Formik
-          initialValues={{
-            name: '',
-            number: '',
-          }}
-          onSubmit={handleFormSubmit}
-        >
           <form onSubmit={handleFormSubmit}>
             <VStack spacing={4} align="flex-start">
               <FormControl>
                 <FormLabel htmlFor="name">Name</FormLabel>
-                <Field
-                  as={Input}
+                <Input
                   id="name"
                   name="name"
                   type="name"
                   variant="filled"
+                  onChange={formik.handleChange}
+                  value={formik.values.name}
                 />
               </FormControl>
               <FormControl>
                 <FormLabel htmlFor="number">Number (000-000-0000)</FormLabel>
-                <Field
-                  as={Input}
+                <Input
                   id="number"
                   name="number"
                   type="tel"
                   variant="filled"
                   placeholder="Phone number"
                   pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                  onChange={formik.handleChange}
+                  value={formik.values.number}
                 />
               </FormControl>
 
@@ -92,7 +86,7 @@ const ContactForm = () => {
               </Button>
             </VStack>
           </form>
-        </Formik>
+        
       </Box>
     </Flex>
   );
