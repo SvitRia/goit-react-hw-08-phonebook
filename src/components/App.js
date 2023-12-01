@@ -1,13 +1,12 @@
 import { useEffect, lazy } from 'react';
 import { useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
-import { Layout } from './UserMenu/Layout';
+import { Layout } from './UserMenu/Layout'; 
 import { PrivateRoute } from './UserMenu/PrivateRoute';
 import { RestrictedRoute } from './UserMenu/RestrictedRoute';
 import { refreshUser } from 'redux/Auth/Operations';
 import { useAuth } from 'hooks';
 
- 
 const HomePage = lazy(() => import('Pages/Home'));
 const RegisterPage = lazy(() => import('Pages/Register'));
 const LoginPage = lazy(() => import('Pages/Login'));

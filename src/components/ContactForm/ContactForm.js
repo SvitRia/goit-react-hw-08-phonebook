@@ -45,10 +45,8 @@ const ContactForm = () => {
       number: "",
       },
     // validationSchema: { quizSchema },
-    onSubmit: (values) => { handleFormSubmit({ name: values.name, number:values.number })},
-    // onSubmit: (values) => {
-    //   alert(JSON.stringify(values, null, 2));
-    // },
+    // onSubmit: (values) => { handleFormSubmit({ name: values.name, number:values.number })},
+   onSubmit:handleFormSubmit
 
   });
   return (
